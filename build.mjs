@@ -1,4 +1,4 @@
-import {mkdir,writeFile,cp} from 'node:fs/promises';
+import {mkdir,writeFile,cp,readFile,rm} from 'node:fs/promises';
 import {copy} from './src/copy.js';
 const origin='https://raphaelsr.github.io/vynpad-site/';
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');
@@ -21,6 +21,17 @@ await mkdir('dist',{recursive:true});
 for(const [lang,c] of Object.entries(copy)){await mkdir(`dist/${c.path}`,{recursive:true});await writeFile(`dist/${c.path}/index.html`,page(lang));}
 await writeFile('dist/index.html',page('pt-BR',true));
 await cp('src/style.css','dist/style.css');await cp('src/app.js','dist/app.js');await cp('public','dist',{recursive:true});
+const updateManifest=await readFile('update.json','utf8').catch(error=>{
+  if(error.code==='ENOENT')return null;
+  throw error;
+});
+if(updateManifest===null){
+  await rm('dist/update.json',{force:true});
+}else{
+  const value=JSON.parse(updateManifest);
+  if(!value||typeof value!=='object'||Array.isArray(value))throw new Error('update.json must contain an object');
+  await writeFile('dist/update.json',updateManifest);
+}
 await writeFile('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${Object.values(copy).map(c=>`<url><loc>${origin}${c.path}/</loc></url>`).join('')}</urlset>`);
 await writeFile('dist/robots.txt',`User-agent: *\nAllow: /\nSitemap: ${origin}sitemap.xml\n`);
 console.log('Built Portuguese, English and Spanish static pages.');

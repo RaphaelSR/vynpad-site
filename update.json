@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "channel": "preview",
+  "desktop": {
+    "version": "0.2.1",
+    "downloads": {
+      "macos-aarch64": "https://github.com/RaphaelSR/vynpad-site/releases/download/v0.2.1-preview/Vynpad_0.2.1_universal.dmg",
+      "macos-x86_64": "https://github.com/RaphaelSR/vynpad-site/releases/download/v0.2.1-preview/Vynpad_0.2.1_universal.dmg"
+    },
+    "releaseNotesUrl": "https://github.com/RaphaelSR/vynpad-site/releases/tag/v0.2.1-preview"
+  },
+  "android": {
+    "versionName": "0.2.1-beta.2",
+    "versionCode": 4,
+    "downloadUrl": "https://github.com/RaphaelSR/vynpad-site/releases/download/v0.2.1-preview/Vynpad_0.2.1_wearos-development.apk",
+    "releaseNotesUrl": "https://github.com/RaphaelSR/vynpad-site/releases/tag/v0.2.1-preview"
+  }
+}
