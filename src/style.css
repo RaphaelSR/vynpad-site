@@ -3,3 +3,7 @@
 .hero-product{overflow:hidden}.hero>*,.demo-grid>*,.studio-body>*,.section-heading>*{min-width:0}.scroll-content h3{font-size:clamp(44px,5vw,70px)}
 
 .brand{letter-spacing:-1.2px}.brand svg{width:32px;height:32px}.hero-product figcaption{font-size:12px}.studio-toolbar strong svg{height:22px}
+
+.download-grid .text-link{margin-top:12px}.download-grid .outline-label{display:table;margin-bottom:8px}
+
+@media(max-width:400px){.nav{padding-inline:16px;gap:8px}.nav .brand{font-size:22px;gap:8px}.nav .brand svg{width:30px;height:30px}.nav .button{font-size:10px;gap:8px;padding:9px 10px}.nav-end{gap:6px}}
